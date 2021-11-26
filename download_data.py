@@ -98,3 +98,23 @@ for url in urls:
     r = requests.get(url, headers={"User-Agent": "XY"})
     open(url[-11:], 'wb').write(r.content)
 
+from os import listdir
+from os.path import isfile, join
+import pandas as pd
+
+# Get all files in data_dir
+files_dir = [f for f in listdir(data_dir) if isfile(join(data_dir, f))]
+
+# build a pandas dataframe
+data = pd.DataFrame()
+for dir in files_dir:
+    table = pd.read_csv(dir, encoding="latin1")
+    data = pd.concat([data, table])
+
+print(data.shape)
+
+# Some idiot wrote the name wrong in one table
+data.rename(columns={"AÃ±o_de_nacimiento": "Año_nacimiento"})
+
+# Save as a ONE table
+data.to_csv(data_dir+"complete_dataframe.csv")
