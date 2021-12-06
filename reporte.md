@@ -345,39 +345,41 @@ La siguiente gráfica muestra el la cantidad de diferentes estaciones registrada
 
 ![agregado2](plots/stations_weekly.png)
 
-Observemos que hay 4 ahumentos importantes en cuanto a la cantidad de diferentes registros, por ello exploraramemos como se se comporta la interacción en estas etapas.
+Observemos que hay 4 aumentos importantes en cuanto a la cantidad de diferentes registros, por ello exploraramemos como se se comporta la interacción en estas etapas.
 
 En las gráficas tipo HeatMap se muestra la interacción de viajes, donde oscuro significa nula o casi nula interacción.
 
-![png](plots/resultsEtapa Uno.png "Etapa 1"){width=1000}
+![png](plots/resultsEtapa Uno.png "Etapa 1"){width=800}
 
-![png](plots/resultsEtapa Dos.png "Etapa 2"){width=1000}
+![png](plots/resultsEtapa Dos.png "Etapa 2"){width=800}
 
-Podemos observar que la primera ampliación no causa un gran inmpacto y no tiene mucha relación entre las estaciones iniciales pues al agregarse no se nota un cambio visible en el mapa de calor.
+Podemos observar que la primera ampliación no causa un gran inmpacto y las estaciones agregadas no tienen mucha interacción  con las estaciones iniciales, pues al agregarse no se nota un cambio visible en el mapa de calor.
 
-![png](plots/resultsEtapa Tres.png "Etapa 3"){width=1000}
+![png](plots/resultsEtapa Tres.png "Etapa 3"){width=800}
 
-Después de la segunda ampliación en cuanto a la cantidad de estaciones se observa un claro incremento en la actividad no solo entre las nuevas estaciones, sino también con las estaciones de la primera estapa pues se nota una iluminación en los puntos correspondientes a esta comunicación. Hay un incremento en las cantidas de viajes entre estaciones, lo que sugiere que incrementó la actividad en general, podemos asumir que hay evidencia visual de que en esta ampliación hubo un cambio significativo en las cantidades de viajes en general.
+Después de la segunda ampliación se observa un claro incremento en la actividad, no solo entre las nuevas estaciones, sino también con las estaciones de la primera estapa pues se nota una iluminación en los puntos correspondientes a esta comunicación. También hay un incremento en las cantidas de viajes entre estaciones, lo que sugiere que incrementó la actividad en general, podemos asumir que hay evidencia visual de que en esta ampliación hubo un cambio significativo en las cantidades de viajes en general.
 
-![png](plots/resultsEtapa Cuatro.png "Etapa 4"){width=1000}
+![png](plots/resultsEtapa Cuatro.png "Etapa 4"){width=800}
 
-Después de la tercera ampliación, podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, sin embargo si hay un nuevo aporte pes las estaciones agregadas en esta etapa tienen intereacción con las estaciones antiguas, pero casi nula con las estaciones de la segunda etapa.
+Después de la tercera ampliación, podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, sin embargo si hay un nuevo aporte pues las estaciones agregadas en esta etapa tienen intereacción con las estaciones antiguas, pero casi nula con las estaciones de la segunda etapa.
 
-![png](plots/resultsEtapa Cinco.png "Etapa 5"){width=1000}
+![png](plots/resultsEtapa Cinco.png "Etapa 5"){width=800}
 
 Finalente al realizarse la cuarta expansión de estaciones podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, así como tampoco representa una gran interacción con las estaciones establecidas anteriormente.
 
-Hay evidencia visual para justificar los cambios en el comportamiento de los viajes de acuerdo a los ahumentos en la cantidad de estaciones, salvo por la primera ampliación, esto puede deberse a su ubicación geográfica. Para la realización de estos gráficos usamos una librería de *python* llamada **seaborn**, que asigna el color de acuerdo a una escala lineal. Para evitar que los gráficos fueran muy opacos decidmos reasigar las observaciones de acuerdo al intervalo al que pertenecían tomando los cortes a partir de los quantiles observados e ignorandos, de esta manera, los puntos mas iluminados serán aquiellos que se encuentren por encima del 90% de las observaciones, siguiendo en orden descendente los que estén por encima de 80% y así descendentemente. Se decidió hacer de esta manera para poner más atención a la distribución y no tanto a los máximos y mínimos.
+Hay evidencia visual para justificar los cambios en el comportamiento de los viajes de acuerdo a los ahumentos en la cantidad de estaciones, salvo por la primera ampliación, esto puede deberse tal vez a su ubicación geográfica pues el mapa de calor muestra que esas estaciones solo mantienen interacción entre ellas prácticamente.
+
+Para la realización de estos gráficos usamos una librería de *python* llamada **seaborn**, que asigna el color de acuerdo a una escala lineal. Para evitar que los gráficos fueran muy opacos decidmos reasigar las observaciones de acuerdo al intervalo al que pertenecían tomando los cortes a partir de los quantiles observados e ignorando los ceros. De esta manera, los puntos mas iluminados serán aquellos que se encuentren por encima del 90% de las observaciones, siguiendo en orden descendente los que estén por encima de 80% y así descendentemente. Se decidió hacer de esta manera para poner más atención a la distribución y no tanto a los máximos y mínimos.
 
 ### Analizando el evento Pandemia
 
 A continuación el HeatMap del promedio de viajes promedio entre estaciones antes del anuncio del paro a las actividades **Marzo 2020**
 
-![png](plots/resultsAntesPandemia.png "Antes del M1rzo 2020"){width=1000}
+![png](plots/resultsAntesPandemia.png "Antes del M1rzo 2020"){width=800}
 
 Y ahora despues del llamado a quedarse en casa.
 
-![png](plots/resultsDespuesPandemia.png "Mes siguiente después de Marzo 2020"){width=1000}
+![png](plots/resultsDespuesPandemia.png "Mes siguiente después de Marzo 2020"){width=800}
 
 Fueron calculados en la misma escala de calor para hacer ver la diferencia, se vuelve muy evidente la gran disminución en cuanto a viajes.
 
