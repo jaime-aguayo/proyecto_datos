@@ -336,7 +336,29 @@ summary(fm1)
 
 ## Análisis de las estaciones
 
+En esta sección se exploramos los viajes entre puntos de registo del sistema, puntos a los que llamaremos estaciones. La idea surge de las onservaciones de que hay un comportamiento diferente a partir de la apertura de nuevas estaciones. Para poder hacer observaciones nos apoyamos en herramientas de *R* así como de *Python*.
+
+Se tomó el acumulado de viajes mensuales y con ello se generaron matrices con la siguiente cualidad:
+**Si había un viaje de la estación *i* hacia la estación *j* entonces a la entrada *(i,j)* de la matriz se le suma 1.**
+
+La siguiente gráfica muestra el la cantidad de diferentes estaciones registradas semanalmente.
+
 ![agregado2](plots/stations_weekly.png)
+
+Observemos que hay 4 ahumentos importantes en cuanto a la cantidad de diferentes registros, por ello exploraramemos como se se comporta la interacción en estas etapas.
+
+![agregado2](plots/resultsEtapa Uno.png)
+
+![agregado2](plots/resultsEtapa Dos.png)
+
+![agregado2](plots/resultsEtapa Tres.png)
+
+![agregado2](plots/resultsEtapa Cuatro.png)
+
+![agregado2](plots/resultsEtapa Cinco.png)
+
+En las gráficas tipo HeatMap se muestra la interacción de viajes, donde oscuro significa nula o cai nula interacción. Podemos observar que la primera ampliación no causa un gran inmpacto y no tiene mucha relación entre las estaciones iniciales pues al agregarse no se nota un cambio visible en el mapa de calor.
+
 
 - ¿La apertura de nuevas estaciones justifica el aumento de viajes? <- ==Aquí debe ir el estudio de viajes entre estaciones==
 - ¿El aumento de viajes se da gracias a nuevos usuarios o a los usuarios ya inscritos en el programa? <- ==Posible nuevo aspecto a explorar==
