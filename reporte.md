@@ -346,3 +346,7 @@ summary(fm1)
 ## Conclusiones y Comentarios Finales
 
 .
+
+
+
+Trino.
