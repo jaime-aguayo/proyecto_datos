@@ -381,6 +381,8 @@ Y ahora despues del llamado a quedarse en casa.
 
 Fueron calculados en la misma escala de calor para hacer ver la diferencia, se vuelve muy evidente la gran disminución encuanto a viajes.
 
+A continuación una visualización de como se fue dando el crecimiento de la intereacción de las estaciones.
+
 - ¿La apertura de nuevas estaciones justifica el aumento de viajes? <- ==Aquí debe ir el estudio de viajes entre estaciones==
 - ¿El aumento de viajes se da gracias a nuevos usuarios o a los usuarios ya inscritos en el programa? <- ==Posible nuevo aspecto a explorar==
 
