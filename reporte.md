@@ -1,6 +1,6 @@
 # Proyecto de Análisis de Datos
 
-En este trabajo analizamos los datos abiertos del programa de renta de bicicletas "Mi Bici" de la zona metropolitana de Guadalajara. En particular nos interesa conocer el impacto que han tenido políticas públicas en la evolución del programa y poder brindar información que permita evaluar el programa. 
+En este trabajo analizamos los datos abiertos del programa de renta de bicicletas "Mi Bici" de la zona metropolitana de Guadalajara. En particular nos interesa conocer el impacto que han tenido políticas públicas en la evolución del programa y poder brindar información que permita evaluar el programa.
 
 Para hacer este análisis, el presente reporte se divide de la siguiente forma:
 
@@ -42,9 +42,9 @@ entre otras.
 
 ![serie de tiempo](plots/serie1.png)
 
-Dado un conjunto de datos $\{(Y_i, X_i)\}_{i=1}^n$ con $X_i \in \R$, suponemos que existen $k$ intervalos $[a_i, a_{i+1}]$ para $i \in \{1, \dots, k\}$, de forma tal que es posible dividir las observaciones en estos intervalos, es decir para índices en $I_j$ , $(Y_i, X_i)_{i \in I_j} \in [a_j, a_j+1]$ de forma tal que hay una relación lineal entre estos datos que puede o no estar relacionada con el modelo lineal de los otros intervalos. 
+Dado un conjunto de datos $\{(Y_i, X_i)\}_{i=1}^n$ con $X_i \in \R$, suponemos que existen $k$ intervalos $[a_i, a_{i+1}]$ para $i \in \{1, \dots, k\}$, de forma tal que es posible dividir las observaciones en estos intervalos, es decir para índices en $I_j$ , $(Y_i, X_i)_{i \in I_j} \in [a_j, a_j+1]$ de forma tal que hay una relación lineal entre estos datos que puede o no estar relacionada con el modelo lineal de los otros intervalos.
 
-¿Bajo qué condiciones se puede dar este supuesto? Es posible que se tenga un experimento a través del tiempo donde las condiciones las experimento cambian por una cierta temporalidad. En nuestro caso queremos probar la hipótesis de que el comportamiento del número de viajes realizados ha cambiado por la pandemia o no. 
+¿Bajo qué condiciones se puede dar este supuesto? Es posible que se tenga un experimento a través del tiempo donde las condiciones las experimento cambian por una cierta temporalidad. En nuestro caso queremos probar la hipótesis de que el comportamiento del número de viajes realizados ha cambiado por la pandemia o no.
 
 De ser cierta la hipótesis, se dice que los datos presentan un **cambio de estructura** y a los puntos $a_2, \dots, a_{k-1}$ como **punto de quiebre**. El problema cambia dependiendo de la información que poseemos.
 
@@ -93,8 +93,8 @@ lines(breakpoints(res2))
 
 ​    En los resultados observmos un linea punteada el posible punto de quiebre para el cual se obtiene el valor del estadísitico $F$ más alto.
 
-    	 Optimal 2-segment partition: 
-    
+    	 Optimal 2-segment partition:
+
     Call:
     breakpoints.Fstats(obj = res2)
 
@@ -102,7 +102,7 @@ lines(breakpoints(res2))
 
 
 ![png](plots/structChange_files/structChange_9_1.png)
-    
+
 
 Note que el máximo lo obtenemos en fechas cercanas a febrero de 2020. Además observamos como todos los valores rebasan la linea roja que corresponde al valor máximo de la prueba a nivel $\alpha=0.05$. Quiere decir que con un nivel del 95 %, rechazamos la hipótesis nula para cualquier punto.
 
@@ -116,7 +116,7 @@ sctest(res, type="supF")
 ​    
 
     	supF test
-    
+
     data:  res2
     sup.F = 1358.7, p-value < 2.2e-16
 
@@ -125,7 +125,7 @@ sctest(res, type="supF")
 Podemos graficar los modelos de regresión que resultan para cada intervalo. Estos se ven así:
 ![png](plots/structChange_files/structChange_15_0.png)
 
-Se aprecia como ambas rectas aproximan bien los datos. Sin embargo observamos que existe un comportamiento diferente en 2015 y 2016, comparrado con 2017 a 2019. Esto puede ser un indicativo de más cambios de estructura que los que contemplamos originalmente. 
+Se aprecia como ambas rectas aproximan bien los datos. Sin embargo observamos que existe un comportamiento diferente en 2015 y 2016, comparrado con 2017 a 2019. Esto puede ser un indicativo de más cambios de estructura que los que contemplamos originalmente.
 
 Antes de evaluar esta posibilidad, vamos a ubicar con precisión el punto de quiebre obtenido y evaluar la calidad de los modelos lineales ajustados.
 
@@ -141,7 +141,7 @@ data$date[bp$breakpoint]
 
 <time datetime="2020-03-09">2020-03-09</time>
 
-Se observa que el punto de quiebre obtenido corresponde a la semana del 9 de marzo de 2020, que corresponde con la semana de [suspensión de clases presenciales](https://www.animalpolitico.com/2020/03/jalisco-suspende-clases-universidades-eventos-masivos-coronavirus/) es el estado de Jalisco. 
+Se observa que el punto de quiebre obtenido corresponde a la semana del 9 de marzo de 2020, que corresponde con la semana de [suspensión de clases presenciales](https://www.animalpolitico.com/2020/03/jalisco-suspende-clases-universidades-eventos-masivos-coronavirus/) es el estado de Jalisco.
 
 Por otro lado, los modelos de regresión parecen ajustarse bien a los datos:
 
@@ -159,11 +159,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp)/date - 1, data = data)
-    
+
     Residuals:
-       Min     1Q Median     3Q    Max 
-    -46783  -4269    467   5072  25152 
-    
+       Min     1Q Median     3Q    Max
+    -46783  -4269    467   5072  25152
+
     Coefficients:
                                    Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp)segment1      -8.191e+05  1.614e+04 -50.743  < 2e-16 ***
@@ -172,9 +172,9 @@ summary(fm1)
     breakfactor(bp)segment2:date  4.330e+01  5.284e+00   8.195 4.70e-15 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-    
+
     Residual standard error: 8367 on 352 degrees of freedom
-    Multiple R-squared:  0.974,	Adjusted R-squared:  0.9737 
+    Multiple R-squared:  0.974,	Adjusted R-squared:  0.9737
     F-statistic:  3297 on 4 and 352 DF,  p-value: < 2.2e-16
 
 Los p-valores del estadístico $T$ son muy chicos y  $R^2 \approx 0.97$, muy cerca de $1$.
@@ -183,7 +183,7 @@ Los p-valores del estadístico $T$ son muy chicos y  $R^2 \approx 0.97$, muy cer
 
 ### Experimentos con múltiples puntos de quiebre
 
-Dado que para muchos valores obtenemos un valor alto de $F$ y por la inspección visual de los datos, es razonable pensar en la existencia de más puntos de quiebre en nuestros datos. Para ello podemos usar el mismo razonamiento hecho con anterioridad, pero ahora evaluar el estadísitico para los dos intervalos obtenidos. Esto es, hacer un análisis para el intervalo que va del primero de enero de 2015 al 9 de marzo de 2020, y otro para el intervalo del 9 de marzo de 2020 a la fecha. 
+Dado que para muchos valores obtenemos un valor alto de $F$ y por la inspección visual de los datos, es razonable pensar en la existencia de más puntos de quiebre en nuestros datos. Para ello podemos usar el mismo razonamiento hecho con anterioridad, pero ahora evaluar el estadísitico para los dos intervalos obtenidos. Esto es, hacer un análisis para el intervalo que va del primero de enero de 2015 al 9 de marzo de 2020, y otro para el intervalo del 9 de marzo de 2020 a la fecha.
 
 Sin embargo este enfoque solo nos va a permitir determinar un punto de quiebre a la vez. Los autores de la librería `strucchange` ponen a nuestra disposición algunos métodos más elaborados para la detección de multiples puntos de quiebre. Dentro de sus propuestas se considera un proceso de fluctuación basado en estimar de forma recursiva modelos de regresión lineal para diferentes ventanas de tiempo. Dado que el estudio de estos procesos de fluctuación están fuera del alcance del curso, nos limitamos a utilizar dicha función y discutir los modelos de regresión que se ajustan con los nuevos puntos de quiebre.
 
@@ -229,35 +229,35 @@ lines(ci)
 
 ​    
 
-    	 Optimal (m+1)-segment partition: 
-    
+    	 Optimal (m+1)-segment partition:
+
     Call:
     breakpoints.formula(formula = trips ~ date + 1, data = data)
-    
+
     Breakpoints at observation number:
-                              
+
     m = 1                  271
     m = 2              209 271
     m = 3      86      209 271
     m = 4      85  150 209 271
     m = 5   53 106 159 212 271
-    
+
     Corresponding to breakdates:
-                                                                                   
+
     m = 1                                                                          
     m = 2                                                         0.587078651685393
     m = 3                     0.241573033707865                   0.587078651685393
     m = 4                     0.23876404494382  0.421348314606742 0.587078651685393
     m = 5   0.148876404494382 0.297752808988764 0.446629213483146 0.595505617977528
-                            
+
     m = 1   0.76123595505618
     m = 2   0.76123595505618
     m = 3   0.76123595505618
     m = 4   0.76123595505618
     m = 5   0.76123595505618
-    
+
     Fit:
-                                                                   
+
     m   0         1         2         3         4         5        
     RSS 1.198e+11 2.464e+10 1.901e+10 1.497e+10 1.398e+10 1.557e+10
     BIC 8.018e+03 7.472e+03 7.398e+03 7.330e+03 7.323e+03 7.379e+03
@@ -266,33 +266,33 @@ lines(ci)
 
 
 ![png](plots/structChange_files/structChange_17_1.png)
-    
 
 
 
 
-    	 Optimal 5-segment partition: 
-    
+
+    	 Optimal 5-segment partition:
+
     Call:
     breakpoints.breakpointsfull(obj = bp.bikes)
-    
+
     Breakpoints at observation number:
-    85 150 209 271 
-    
+    85 150 209 271
+
     Corresponding to breakdates:
-    0.238764 0.4213483 0.5870787 0.761236 
+    0.238764 0.4213483 0.5870787 0.761236
 
 
 
 
 ![png](plots/structChange_files/structChange_17_3.png)
-    
+
 
 
 
 
 ![png](plots/structChange_files/structChange_17_4.png)
-    
+
 
 
 
@@ -306,26 +306,26 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp.bikes2)/date - 1, data = data)
-    
+
     Residuals:
-       Min     1Q Median     3Q    Max 
-    -37872  -1903    492   3757  16818 
-    
+       Min     1Q Median     3Q    Max
+    -37872  -1903    492   3757  16818
+
     Coefficients:
                                           Estimate Std. Error t value Pr(>|t|)    
-    breakfactor(bp.bikes2)segment1      -1.816e+05  6.812e+04  -2.666 0.008041 ** 
+    breakfactor(bp.bikes2)segment1      -1.816e+05  6.812e+04  -2.666 0.008041 **
     breakfactor(bp.bikes2)segment2      -7.867e+05  4.157e+04 -18.925  < 2e-16 ***
     breakfactor(bp.bikes2)segment3       5.271e+05  1.205e+05   4.375  1.6e-05 ***
     breakfactor(bp.bikes2)segment4      -7.583e+05  7.717e+04  -9.826  < 2e-16 ***
-    breakfactor(bp.bikes2)segment1:date  1.143e+01  4.070e+00   2.809 0.005249 ** 
+    breakfactor(bp.bikes2)segment1:date  1.143e+01  4.070e+00   2.809 0.005249 **
     breakfactor(bp.bikes2)segment2:date  4.780e+01  2.379e+00  20.089  < 2e-16 ***
     breakfactor(bp.bikes2)segment3:date -2.458e+01  6.649e+00  -3.697 0.000254 ***
     breakfactor(bp.bikes2)segment4:date  4.330e+01  4.142e+00  10.455  < 2e-16 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-    
+
     Residual standard error: 6558 on 348 degrees of freedom
-    Multiple R-squared:  0.9842,	Adjusted R-squared:  0.9838 
+    Multiple R-squared:  0.9842,	Adjusted R-squared:  0.9838
     F-statistic:  2711 on 8 and 348 DF,  p-value: < 2.2e-16
 
 
@@ -346,7 +346,3 @@ summary(fm1)
 ## Conclusiones y Comentarios Finales
 
 .
-
-
-
-Trino.
