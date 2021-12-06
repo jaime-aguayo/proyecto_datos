@@ -349,21 +349,21 @@ Observemos que hay 4 ahumentos importantes en cuanto a la cantidad de diferentes
 
 En las gráficas tipo HeatMap se muestra la interacción de viajes, donde oscuro significa nula o casi nula interacción.
 
-![agregado2](plots/resultsEtapa Uno.png)
+![png](plots/resultsEtapa Uno.png){width=1000}
 
-![agregado2](plots/resultsEtapa Dos.png)
+![png](plots/resultsEtapa Dos.png){width=1000}
 
 Podemos observar que la primera ampliación no causa un gran inmpacto y no tiene mucha relación entre las estaciones iniciales pues al agregarse no se nota un cambio visible en el mapa de calor.
 
-![agregado2](plots/resultsEtapa Tres.png)
+![png](plots/resultsEtapa Tres.png){width=1000}
 
 Después de la segunda ampliación en cuanto a la cantidad de estaciones se observa un claro incremento en la actividad no solo entre las nuevas estaciones, sino también con las estaciones de la primera estapa pues se nota una iluminación en los puntos correspondientes a esta comunicación. Hay un incremento en las cantidas de viajes entre estaciones, lo que sugiere que incrementó la actividad en general, podemos asumir que hay evidencia visual de que en esta ampliación hubo un cambio significativo en las cantidades de viajes en general.
 
-![agregado2](plots/resultsEtapa Cuatro.png)
+![png](plots/resultsEtapa Cuatro.png){width=1000}
 
 Después de la tercera ampliación, podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, sin embargo si hay un nuevo aporte pes las estaciones agregadas en esta etapa tienen intereacción con las estaciones antiguas, pero casi nula con las estaciones de la segunda etapa.
 
-![agregado2](plots/resultsEtapa Cinco.png)
+![png](plots/resultsEtapa Cinco.png){width=1000}
 
 Finalente al realizarse la cuarta expansión de estaciones podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, así como tampoco representa una gran interacción con las estaciones establecidas anteriormente.
 
