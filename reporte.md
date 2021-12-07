@@ -1,6 +1,6 @@
 # Proyecto de Análisis de Datos
 
-En este trabajo analizamos los datos abiertos del programa de renta de bicicletas "Mi Bici" de la zona metropolitana de Guadalajara. En particular nos interesa conocer el impacto que han tenido políticas públicas en la evolución del programa y poder brindar información que permita evaluar el programa.
+En este trabajo analizamos los datos abiertos del programa de [renta de bicicletas](https://mibici.net) "Mi Bici" de la zona metropolitana de Guadalajara. En particular nos interesa conocer el impacto que han tenido políticas de ampliación del programa y las políticas de distanciamiento social derivadas de la pandemia. Con este análisis esperamos brindar información que permita evaluar el programa de renta de bicicletas.
 
 Para hacer este análisis, el presente reporte se divide de la siguiente forma:
 
@@ -15,26 +15,38 @@ Sin más preámbulo, pasamos a describir la limpieza de los datos y los resultad
 
 ## Análisis Exploratorio de Datos
 
-- Importación de datos
-- Variables de interés
-- Obtención de las series de tiempo
-- ¿Cómo agrupar el número de viajes?
-- ¿Cómo obtener los viajes entre estaciones?
-- ¿Cómo obtener la fecha de inscripción de nuevos usuarios?
+Los datos proporcionados por Mi Bici están disposibles en agregados mensuales. Cada archivo consiste en una tabla que proporciona para cada viaje:
 
+- Un Identificador único del viaje
+- El identificador del usuario que realiza el viaje
+- Género del usuario
+- Año de nacimiento del usuario
+- Fecha y hora del inicio del viaje
+- Fecha y hora del fin del viaje
+- Identificador de la estación de origen
+- Indentificación de la estación destino
 
-
-Aquí van gráficas:
+Como para responder nuestras preguntas, solo necesitamos el número de viajes por intervalo de tiempo, decidimos contar el número de viajes realizados al día. El resultado fue el siguiente:
 
 ![agregado](plots/trips_daily.png)
 
-![agregado2](plots/trips_daily_by_weekend.png)
+En esta gráfica se observa el número de viajes por día, desde el enero de 2015 hasta octubre de 2021.
+
+En la gráfica se aprecia como hay una gran variabilidad de un día a otro. De hecho, podemos encontrar al menos dos grupos diferenciados, uno arriba y otro abajo. Para distiguir los días de mejor manera, agrupamos por días de la semana obtieniendo lo siguiente:
 
 ![agregado3](plots/trips_daily_by_day.png)
 
+Podemos observar como sábados y domingos tenemos una baja en el número de viajes. Más evidente es en la siguiente gráfica.
+
+![agregado2](plots/trips_daily_by_weekend.png)
+
+Puesto que no queremos que nuestros métodos para evaluar el cambio de estructura se vean afectados por el cambio en los días de la semana, decidimos agregar el número de viajes realizados cada semana (empezando en lunes). El número de viajes por se mana presenta la siguiente estructura:
+
 ![agregado3](plots/trips_weekly.png)
 
-entre otras.
+Se observa una serie de tiempo más uniforme con pequeñas caidas en lo que suponemos son semanas con fines de semana largos o vacaciones. De ya se puede apreciar una caida en el númeri de viajes a inicio del 2020, seguramente provocada por las medidas de confinamiento implementadas en la entidad al inicio de la pandemia. 
+
+También nos interesó contabilizar el número de viajes realizados entre pares de estaciones, el prrocesamiento de esos datos se detalla en la penúltima sección.
 
 ---
 
@@ -94,7 +106,7 @@ lines(breakpoints(res2))
 ​    En los resultados observmos un linea punteada el posible punto de quiebre para el cual se obtiene el valor del estadísitico $F$ más alto.
 
     	 Optimal 2-segment partition:
-
+    
     Call:
     breakpoints.Fstats(obj = res2)
 
@@ -116,7 +128,7 @@ sctest(res, type="supF")
 ​    
 
     	supF test
-
+    
     data:  res2
     sup.F = 1358.7, p-value < 2.2e-16
 
@@ -159,11 +171,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp)/date - 1, data = data)
-
+    
     Residuals:
        Min     1Q Median     3Q    Max
     -46783  -4269    467   5072  25152
-
+    
     Coefficients:
                                    Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp)segment1      -8.191e+05  1.614e+04 -50.743  < 2e-16 ***
@@ -172,7 +184,7 @@ summary(fm1)
     breakfactor(bp)segment2:date  4.330e+01  5.284e+00   8.195 4.70e-15 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
+    
     Residual standard error: 8367 on 352 degrees of freedom
     Multiple R-squared:  0.974,	Adjusted R-squared:  0.9737
     F-statistic:  3297 on 4 and 352 DF,  p-value: < 2.2e-16
@@ -187,115 +199,18 @@ Dado que para muchos valores obtenemos un valor alto de $F$ y por la inspección
 
 Sin embargo este enfoque solo nos va a permitir determinar un punto de quiebre a la vez. Los autores de la librería `strucchange` ponen a nuestra disposición algunos métodos más elaborados para la detección de multiples puntos de quiebre. Dentro de sus propuestas se considera un proceso de fluctuación basado en estimar de forma recursiva modelos de regresión lineal para diferentes ventanas de tiempo. Dado que el estudio de estos procesos de fluctuación están fuera del alcance del curso, nos limitamos a utilizar dicha función y discutir los modelos de regresión que se ajustan con los nuevos puntos de quiebre.
 
-==To do:==
-
-- Discutir la suma de residuos cuando se agregan uno, dos y tres puntos de quiebre, así como discutir la desición de tomar solo 3 puntos.
-- Discutir los estadísticos $T$ para los modelos usando los tres puntos de quiebre.
-- Discutir la posible causa de los puntos de quiebre (ampliación del número de estaciones vs modelos de regresión ==pendiente==).
-
-
-
-
-```R
-re.bikes <- efp(trips ~ date + 1, data = data, type = "ME")
-plot(re.bikes)
-
-## dating
-bp.bikes <- breakpoints(trips ~ date + 1, data = data)
-summary(bp.bikes)
-lines(bp.bikes)
-
-## minimum BIC partition
-plot(bp.bikes)
-breakpoints(bp.bikes)
-
-bp.bikes2 <- breakpoints(serie ~ data$date + 1, breaks = 3)
-fm0 <- lm(trips ~ date + 1, data = data)
-fm1 <- lm(trips ~ breakfactor(bp.bikes2)/ date - 1, data = data)
-
-## confidence interval
-ci <- confint(bp.bikes2, level = 0.95)
-
-## plot
-plot(data$X, data$trips, xaxt = "n", xlab = "")
-axis(1, labels=labels, at = ticks, las=2)
-
-lines(fitted(fm0), col = 3, lwd = 2)
-lines(fitted(fm1), col = 4, lwd = 2)
-lines(bp.bikes2)
-lines(ci)
-```
-
-
-​    
-
-    	 Optimal (m+1)-segment partition:
-
-    Call:
-    breakpoints.formula(formula = trips ~ date + 1, data = data)
-
-    Breakpoints at observation number:
-
-    m = 1                  271
-    m = 2              209 271
-    m = 3      86      209 271
-    m = 4      85  150 209 271
-    m = 5   53 106 159 212 271
-
-    Corresponding to breakdates:
-
-    m = 1                                                                          
-    m = 2                                                         0.587078651685393
-    m = 3                     0.241573033707865                   0.587078651685393
-    m = 4                     0.23876404494382  0.421348314606742 0.587078651685393
-    m = 5   0.148876404494382 0.297752808988764 0.446629213483146 0.595505617977528
-
-    m = 1   0.76123595505618
-    m = 2   0.76123595505618
-    m = 3   0.76123595505618
-    m = 4   0.76123595505618
-    m = 5   0.76123595505618
-
-    Fit:
-
-    m   0         1         2         3         4         5        
-    RSS 1.198e+11 2.464e+10 1.901e+10 1.497e+10 1.398e+10 1.557e+10
-    BIC 8.018e+03 7.472e+03 7.398e+03 7.330e+03 7.323e+03 7.379e+03
-
-
-
-
-![png](plots/structChange_files/structChange_17_1.png)
-
-
-
-
-
-    	 Optimal 5-segment partition:
-
-    Call:
-    breakpoints.breakpointsfull(obj = bp.bikes)
-
-    Breakpoints at observation number:
-    85 150 209 271
-
-    Corresponding to breakdates:
-    0.238764 0.4213483 0.5870787 0.761236
-
-
+La función `efp(trips ~ date + 1, data = data, type = "ME")` realiza el análisis y regresa los posibles puntos de quiebre. Lo que es de nuestro interés, es analizar el *residual sum of squares* cuando ajustamos un solo modelo de regrresión lineal, dos modelos, tres modelos o cuatro modelos dependiendo del número de quiebres que obtenemos. Esto se puede apreciar en la siguiente gráfica:
 
 
 ![png](plots/structChange_files/structChange_17_3.png)
 
-
-
-
+Podemos destacar que el cambio en el error disminuye considerablemente de 0 a 1 punto de quiebre. Este punto corresponde al ya analizado. Por otro lado, se observa que después del cuarto punto de quiebre, el error aumenta. Después de una inspección visual de los modelos de regresión, decidimos quedarnos con los primeros tres puntos de quiebre, pues se ajustan muy bien a los datos como se muestra en la siguiente imagen:
 
 ![png](plots/structChange_files/structChange_17_4.png)
 
 
 
-
+En rojo se observa el intervalo de confianza del punto de quiebre utilizando el estadístico F. Para evaluar la calidad de nuestro modelos de regresión, observamos el resumen que arroja R:
 
 ```R
 summary(fm1)
@@ -306,11 +221,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp.bikes2)/date - 1, data = data)
-
+    
     Residuals:
        Min     1Q Median     3Q    Max
     -37872  -1903    492   3757  16818
-
+    
     Coefficients:
                                           Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp.bikes2)segment1      -1.816e+05  6.812e+04  -2.666 0.008041 **
@@ -323,14 +238,28 @@ summary(fm1)
     breakfactor(bp.bikes2)segment4:date  4.330e+01  4.142e+00  10.455  < 2e-16 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
+    
     Residual standard error: 6558 on 348 degrees of freedom
     Multiple R-squared:  0.9842,	Adjusted R-squared:  0.9838
     F-statistic:  2711 on 8 and 348 DF,  p-value: < 2.2e-16
 
+Vemos que el p-valor del estadístico $T$ para cada coeficiente es muy bajo, menor a $10^{-3}$ en la mayoría de los casos. Además vemos que $R^2$ es muy cercano a 1, lo que habla muy bien de nuestro modelos. 
 
+Por último graficamos la serie de tiempo, en rojo los modelos de regresión lineal para cada intervalo, en verde el modelo lineal ajustado a toda la serie y en en rojo las fechas estimadas de los puntos de quiebre.
 
 ![regressions](plots/serie_breaks.png)
+
+¿A qué se pueden deber los puntos de quiebre?
+
+Tratando de explicar los cambios de estructura, nos dimos a la tarea de investigar noticias relativas al programa Mi Bici en fechas cercanas a los puntos de quiebre. Los resultados fueron los siguientes:
+
+- El octubre de 2016 se [inauguró la segunda etapa del programa](https://www.informador.mx/Jalisco/Inauguran-segunda-etapa-de-MiBici-20161027-0035.html), con la ampliación del número de estaciones. 
+- En noviembre de 2018 se [inauguró la tercera etapa del programa](https://www.eloccidental.com.mx/local/inauguran-tercera-etapa-de-mibici-2714371.html).
+- El 3 de marzo de 2020 se [suspendieron las clases presenciales](https://www.animalpolitico.com/2020/03/jalisco-suspende-clases-universidades-eventos-masivos-coronavirus/) en el estado de Jalisco.
+
+Salvo la suspensión de clases, los punto de quiebre no corresponden exactamente a las inauguraciones del número de estaciones, pero están fuertemente relacionadas pues, de acuerdo a los datos reportados, las estaciones ya se encontraban en uso semanas antes de la inauguración. Como ejemplo, la semana del 15 de agosoto de 2016 se dio una apliación de aproximadamente 120 a 234 estaciones en uso. Como comparación, en el análsis localizamos un punto de quiebre en la semana del 22 de agosoto del mismo año.
+
+En el siguiente capítulo se abarca un poco más a detalle el impacto en la ampliación del número de estaciones.
 
 ---
 
@@ -341,7 +270,7 @@ En esta sección exploramos los viajes entre puntos de recogida de bicicletas, p
 Se tomó el acumulado de viajes mensuales y con ello se generaron matrices con la siguiente cualidad:
 **Si había un viaje de la estación *i* hacia la estación *j* entonces a la entrada *(i,j)* de la matriz se le suma 1.**
 
-La siguiente gráfica muestra la cantidad de diferentes estaciones registradas semanalmente.
+La siguiente gráfica muestra la cantidad de diferentes estaciones que registraron viajes semanalmente.
 
 ![agregado2](plots/stations_weekly.png)
 
