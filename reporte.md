@@ -44,7 +44,7 @@ Puesto que no queremos que nuestros métodos para evaluar el cambio de estructur
 
 ![agregado3](plots/trips_weekly.png)
 
-Se observa una serie de tiempo más uniforme con pequeñas caidas en lo que suponemos son semanas con fines de semana largos o vacaciones. De ya se puede apreciar una caida en el númeri de viajes a inicio del 2020, seguramente provocada por las medidas de confinamiento implementadas en la entidad al inicio de la pandemia. 
+Se observa una serie de tiempo más uniforme con pequeñas caidas en lo que suponemos son semanas con fines de semana largos o vacaciones. De ya se puede apreciar una caida en el númeri de viajes a inicio del 2020, seguramente provocada por las medidas de confinamiento implementadas en la entidad al inicio de la pandemia.
 
 También nos interesó contabilizar el número de viajes realizados entre pares de estaciones, el prrocesamiento de esos datos se detalla en la penúltima sección.
 
@@ -106,7 +106,7 @@ lines(breakpoints(res2))
 ​    En los resultados observmos un linea punteada el posible punto de quiebre para el cual se obtiene el valor del estadísitico $F$ más alto.
 
     	 Optimal 2-segment partition:
-    
+
     Call:
     breakpoints.Fstats(obj = res2)
 
@@ -128,7 +128,7 @@ sctest(res, type="supF")
 ​    
 
     	supF test
-    
+
     data:  res2
     sup.F = 1358.7, p-value < 2.2e-16
 
@@ -171,11 +171,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp)/date - 1, data = data)
-    
+
     Residuals:
        Min     1Q Median     3Q    Max
     -46783  -4269    467   5072  25152
-    
+
     Coefficients:
                                    Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp)segment1      -8.191e+05  1.614e+04 -50.743  < 2e-16 ***
@@ -184,7 +184,7 @@ summary(fm1)
     breakfactor(bp)segment2:date  4.330e+01  5.284e+00   8.195 4.70e-15 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-    
+
     Residual standard error: 8367 on 352 degrees of freedom
     Multiple R-squared:  0.974,	Adjusted R-squared:  0.9737
     F-statistic:  3297 on 4 and 352 DF,  p-value: < 2.2e-16
@@ -221,11 +221,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp.bikes2)/date - 1, data = data)
-    
+
     Residuals:
        Min     1Q Median     3Q    Max
     -37872  -1903    492   3757  16818
-    
+
     Coefficients:
                                           Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp.bikes2)segment1      -1.816e+05  6.812e+04  -2.666 0.008041 **
@@ -238,12 +238,12 @@ summary(fm1)
     breakfactor(bp.bikes2)segment4:date  4.330e+01  4.142e+00  10.455  < 2e-16 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-    
+
     Residual standard error: 6558 on 348 degrees of freedom
     Multiple R-squared:  0.9842,	Adjusted R-squared:  0.9838
     F-statistic:  2711 on 8 and 348 DF,  p-value: < 2.2e-16
 
-Vemos que el p-valor del estadístico $T$ para cada coeficiente es muy bajo, menor a $10^{-3}$ en la mayoría de los casos. Además vemos que $R^2$ es muy cercano a 1, lo que habla muy bien de nuestro modelos. 
+Vemos que el p-valor del estadístico $T$ para cada coeficiente es muy bajo, menor a $10^{-3}$ en la mayoría de los casos. Además vemos que $R^2$ es muy cercano a 1, lo que habla muy bien de nuestro modelos.
 
 Por último graficamos la serie de tiempo, en rojo los modelos de regresión lineal para cada intervalo, en verde el modelo lineal ajustado a toda la serie y en en rojo las fechas estimadas de los puntos de quiebre.
 
@@ -253,7 +253,7 @@ Por último graficamos la serie de tiempo, en rojo los modelos de regresión lin
 
 Tratando de explicar los cambios de estructura, nos dimos a la tarea de investigar noticias relativas al programa Mi Bici en fechas cercanas a los puntos de quiebre. Los resultados fueron los siguientes:
 
-- El octubre de 2016 se [inauguró la segunda etapa del programa](https://www.informador.mx/Jalisco/Inauguran-segunda-etapa-de-MiBici-20161027-0035.html), con la ampliación del número de estaciones. 
+- El octubre de 2016 se [inauguró la segunda etapa del programa](https://www.informador.mx/Jalisco/Inauguran-segunda-etapa-de-MiBici-20161027-0035.html), con la ampliación del número de estaciones.
 - En noviembre de 2018 se [inauguró la tercera etapa del programa](https://www.eloccidental.com.mx/local/inauguran-tercera-etapa-de-mibici-2714371.html).
 - El 3 de marzo de 2020 se [suspendieron las clases presenciales](https://www.animalpolitico.com/2020/03/jalisco-suspende-clases-universidades-eventos-masivos-coronavirus/) en el estado de Jalisco.
 
@@ -339,8 +339,9 @@ A continuación una visualización de como se fue dando el crecimiento de la int
 
 ## Conclusiones y Comentarios Finales
 
-- Hay evidencia significativa para afirmar que el aumentos del número de estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el programa. Se destaca en particular la etapa 3. (que coinden los puntos de quiebre con los aumentos y se ve que las nuevas estaciones sí se usan y muchas de ellas conectan con las estaciones más usadas)
-- El impacto de las medidas de distanciamiento social es notorio en el uso de las bicicletas del programa (cambio de estructura más evidente, el heatmap...). De acuerdo al modelo de regresión lineal, se observa un aumento gradual de viajes.
+- Hay evidencia significativa para afirmar que el aumentos del número de estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el programa. Se destaca en particular la etapa 3. Tenemos el soporte de los tests aplicados, apoyados con herramientas visuales no podemos aceptar que no haya puntos de quiebre, por lo que rechazamos que no existan, aceptamos que el comportamiento de la cantidad de viajes realizados tiene puntos de inflexion por lo que existen cambios en el modelo. (que coinden los puntos de quiebre con los aumentos y se ve que las nuevas estaciones sí se usan y muchas de ellas conectan con las estaciones más usadas)
+- El impacto de las medidas de distanciamiento social es notorio en el uso de las bicicletas del programa (cambio de estructura más evidente, el heatmap...). De acuerdo al modelo de regresión lineal, se observa un aumento gradual de viajes qué también deja evidencia en las interacciones entre entre estaciones.
 - Hay regiones fuertemente conexas, en el sentido de que la mayoría de viajes ocurren entre estaciones de estos conjuntos denomidos regiones. (estaciones muy interrelacionadas),
-- El impacto del aumento de estaciones fue inmediato al verse un aumento abruto en los viajes (explicar que es de acuerdo a lo que se observa y que no necesariamente refleja la realidad [ejemplos])
+- El impacto del aumento de estaciones fue inmediato al verse un aumento abrupto en los viajes esto lo podemos asumir de basándonos tanto en los tests así como en los intervalos de confianza puesto que son muy pequeños. (explicar que es de acuerdo a lo que se observa y que no necesariamente refleja la realidad [ejemplos])
 - Un punto a tomar en cuenta es que aumentar el número de estaciones no garantiza un mayor uso, el mejor ejemplo de esto es que ocurrió una aparente ampliación en el número de estaciones en 2015 pero no significó una diferencia, y esto lo sustentan las observaciones visuales así como su no detección en los tests para puntos de quiebre.
+- El uso de la herramienta Heatmap fue de gran utilidad para el entendimiento de los datos en general, interpretado de manera correcta es una de las mejores herramientas para visualización.
