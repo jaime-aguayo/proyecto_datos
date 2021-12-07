@@ -411,6 +411,7 @@ A continuación una visualización de como se fue dando el crecimiento de la int
 ## Conclusiones y Comentarios Finales
 
 - Hay evidencia significativa para afirmar que el aumentos del número de estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el programa. Se destaca en particular la etapa 3. (que coinden los puntos de quiebre con los aumentos y se ve que las nuevas estaciones sí se usan y muchas de ellas conectan con las estaciones más usadas)
-- El impacto de las medidas de distanciamiento social es notorrio en el uso de las bicicletas del programa (cmabio de estructura más evidente, el heatmap...). De acuerdo al modelo de regresión lineal, se observa un aumento grradual de viajes.
-- Hay regiones fuertemente conexas (estaciones muy interrelacionadas),
+- El impacto de las medidas de distanciamiento social es notorio en el uso de las bicicletas del programa (cambio de estructura más evidente, el heatmap...). De acuerdo al modelo de regresión lineal, se observa un aumento gradual de viajes.
+- Hay regiones fuertemente conexas, en el sentido de que la mayoría de viajes ocurren entre estaciones de estos conjuntos denomidos regiones. (estaciones muy interrelacionadas),
 - El impacto del aumento de estaciones fue inmediato al verse un aumento abruto en los viajes (explicar que es de acuerdo a lo que se observa y que no necesariamente refleja la realidad [ejemplos])
+- Un punto a tomar en cuenta es que aumentar el número de estaciones no garantiza un mayor uso, el mejor ejemplo de esto es que ocurrió una aparente ampliación en el número de estaciones en 2015 pero no significó una diferencia, y esto lo sustentan las observaciones visuales así como su no detección en los tests para puntos de quiebre.
