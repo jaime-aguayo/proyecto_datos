@@ -94,7 +94,7 @@ lines(breakpoints(res2))
 ​    En los resultados observmos un linea punteada el posible punto de quiebre para el cual se obtiene el valor del estadísitico $F$ más alto.
 
     	 Optimal 2-segment partition:
-    
+
     Call:
     breakpoints.Fstats(obj = res2)
 
@@ -116,7 +116,7 @@ sctest(res, type="supF")
 ​    
 
     	supF test
-    
+
     data:  res2
     sup.F = 1358.7, p-value < 2.2e-16
 
@@ -159,11 +159,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp)/date - 1, data = data)
-    
+
     Residuals:
        Min     1Q Median     3Q    Max
     -46783  -4269    467   5072  25152
-    
+
     Coefficients:
                                    Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp)segment1      -8.191e+05  1.614e+04 -50.743  < 2e-16 ***
@@ -172,7 +172,7 @@ summary(fm1)
     breakfactor(bp)segment2:date  4.330e+01  5.284e+00   8.195 4.70e-15 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-    
+
     Residual standard error: 8367 on 352 degrees of freedom
     Multiple R-squared:  0.974,	Adjusted R-squared:  0.9737
     F-statistic:  3297 on 4 and 352 DF,  p-value: < 2.2e-16
@@ -230,34 +230,34 @@ lines(ci)
 ​    
 
     	 Optimal (m+1)-segment partition:
-    
+
     Call:
     breakpoints.formula(formula = trips ~ date + 1, data = data)
-    
+
     Breakpoints at observation number:
-    
+
     m = 1                  271
     m = 2              209 271
     m = 3      86      209 271
     m = 4      85  150 209 271
     m = 5   53 106 159 212 271
-    
+
     Corresponding to breakdates:
-    
+
     m = 1                                                                          
     m = 2                                                         0.587078651685393
     m = 3                     0.241573033707865                   0.587078651685393
     m = 4                     0.23876404494382  0.421348314606742 0.587078651685393
     m = 5   0.148876404494382 0.297752808988764 0.446629213483146 0.595505617977528
-    
+
     m = 1   0.76123595505618
     m = 2   0.76123595505618
     m = 3   0.76123595505618
     m = 4   0.76123595505618
     m = 5   0.76123595505618
-    
+
     Fit:
-    
+
     m   0         1         2         3         4         5        
     RSS 1.198e+11 2.464e+10 1.901e+10 1.497e+10 1.398e+10 1.557e+10
     BIC 8.018e+03 7.472e+03 7.398e+03 7.330e+03 7.323e+03 7.379e+03
@@ -272,13 +272,13 @@ lines(ci)
 
 
     	 Optimal 5-segment partition:
-    
+
     Call:
     breakpoints.breakpointsfull(obj = bp.bikes)
-    
+
     Breakpoints at observation number:
     85 150 209 271
-    
+
     Corresponding to breakdates:
     0.238764 0.4213483 0.5870787 0.761236
 
@@ -306,11 +306,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp.bikes2)/date - 1, data = data)
-    
+
     Residuals:
        Min     1Q Median     3Q    Max
     -37872  -1903    492   3757  16818
-    
+
     Coefficients:
                                           Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp.bikes2)segment1      -1.816e+05  6.812e+04  -2.666 0.008041 **
@@ -323,7 +323,7 @@ summary(fm1)
     breakfactor(bp.bikes2)segment4:date  4.330e+01  4.142e+00  10.455  < 2e-16 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-    
+
     Residual standard error: 6558 on 348 degrees of freedom
     Multiple R-squared:  0.9842,	Adjusted R-squared:  0.9838
     F-statistic:  2711 on 8 and 348 DF,  p-value: < 2.2e-16
@@ -347,23 +347,39 @@ La siguiente gráfica muestra la cantidad de diferentes estaciones registradas s
 
 Observemos que hay 4 aumentos importantes en cuanto a la cantidad de estaciones diferentes, por ello exploramos como se se comporta la interacción en estas etapas.
 
-En las gráficas tipo HeatMap se muestra la interacción de viajes, donde oscuro significa nula o casi nula interacción.
+En las gráficas tipo HeatMap se muestra la interacción de viajes, donde oscuro significa nula o casi nula interacción. Cada una de ellas fue calculada promediando las interacciones mensuales de acuerdo a la duración de la etapa.
 
-![png](plots/resultsEtapa Uno.png "Etapa 1"){width=800}
+![png](plots/resultsUno.png "Etapa 1"){width=800}
 
-![png](plots/resultsEtapa Dos.png "Etapa 2"){width=800}
+Etapa Uno tomando los primeros 4 meses del registro, de Enero de 2015 a Abril de 2015.
+
+![png](plots/resultsDos.png "Etapa 2"){width=800}
+
+Etapa Dos tomando de Mayo de 2015 a Julio de 2016.
 
 Podemos observar que la primera ampliación no causa un gran inmpacto y las estaciones agregadas no tienen mucha interacción  con las estaciones iniciales, pues al agregarse no se nota un cambio visible en el mapa de calor.
 
-![png](plots/resultsEtapa Tres.png "Etapa 3"){width=800}
+![png](plots/resultsTres.png "Etapa 3"){width=800}
+
+Etapa Tres tomando de Agosto de 2016 a Octubre de 2018.
 
 Después de la segunda ampliación se observa un claro incremento en la actividad, no solo entre las nuevas estaciones, sino también con las estaciones de la primera estapa pues se nota una iluminación en los puntos correspondientes a esta comunicación. También hay un incremento en las cantidas de viajes entre estaciones, lo que sugiere que incrementó la actividad en general, podemos asumir que hay evidencia visual de que en esta ampliación hubo un cambio significativo en las cantidades de viajes en general.
 
-![png](plots/resultsEtapa Cuatro.png "Etapa 4"){width=800}
+![png](plots/resultsCuatro.png "Etapa 4"){width=800}
+
+Etapa Cuatro tomando de Noviembre de 2018 a Febrero de 2020.
+
+Decidimos hacer un corte aquí por el evento del confinamiento dictado a inicios de Marzo de 2020.
+
+![png](plots/resultsCinco.png "Etapa 5"){width=800}
+
+Etapa Cinco tomando de Marzo de 2020 a Abril de 2021.
 
 Después de la tercera ampliación, podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, sin embargo si hay un nuevo aporte pues las estaciones agregadas en esta etapa tienen intereacción con las estaciones antiguas, pero casi nula con las estaciones de la segunda etapa.
 
-![png](plots/resultsEtapa Cinco.png "Etapa 5"){width=800}
+![png](plots/resultsSeis.png "Etapa 6"){width=800}
+
+Tomado de Mayo 2021 en adelante.
 
 Finalente al realizarse la cuarta expansión de estaciones podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, así como tampoco representa una gran interacción con las estaciones establecidas anteriormente.
 
@@ -396,6 +412,5 @@ A continuación una visualización de como se fue dando el crecimiento de la int
 
 - Hay evidencia significativa para afirmar que el aumentos del número de estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el programa. Se destaca en particular la etapa 3. (que coinden los puntos de quiebre con los aumentos y se ve que las nuevas estaciones sí se usan y muchas de ellas conectan con las estaciones más usadas)
 - El impacto de las medidas de distanciamiento social es notorrio en el uso de las bicicletas del programa (cmabio de estructura más evidente, el heatmap...). De acuerdo al modelo de regresión lineal, se observa un aumento grradual de viajes.
-- Hay regiones fuertemente conexas (estaciones muy interrelacionadas), 
+- Hay regiones fuertemente conexas (estaciones muy interrelacionadas),
 - El impacto del aumento de estaciones fue inmediato al verse un aumento abruto en los viajes (explicar que es de acuerdo a lo que se observa y que no necesariamente refleja la realidad [ejemplos])
-
