@@ -106,8 +106,7 @@
 \maketitle
 \newpage
 \hypertarget{proyecto-de-anuxe1lisis-de-datos}{%
-\section{Proyecto de Análisis de
-Datos}\label{proyecto-de-anuxe1lisis-de-datos}}
+\section{Sobre el proyecto}\label{proyecto-de-anuxe1lisis-de-datos}}
 
 En este trabajo analizamos los datos abiertos del programa de
 \href{https://mibici.net}{renta de bicicletas} "Mi Bici" de la zona
@@ -212,18 +211,18 @@ de viajes. Más evidente es en la siguiente gráfica.
 Puesto que no queremos que nuestros métodos para evaluar el cambio de
 estructura se vean afectados por el cambio en los días de la semana,
 decidimos agregar el número de viajes realizados cada semana (empezando
-en lunes). El número de viajes por se mana presenta la siguiente
-estructura:
+en lunes). El número de viajes por semana presenta la estructura de la
+fig. \ref{fig-x}.
 
-\begin{figure}[!h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=8cm, height=6cm]{../plots/trips_weekly.png}
-\caption{Número de viajes realizados por semana.}
+\caption{Número de viajes realizados por semana.} \label{fig-x}
 \end{figure}
 
 Se observa una serie de tiempo más uniforme con pequeñas caidas en lo
 que suponemos son semanas con fines de semana largos o vacaciones. De ya
-se puede apreciar una caida en el númeri de viajes a inicio del 2020,
+se puede apreciar una caida en el número de viajes a inicio del 2020,
 seguramente provocada por las medidas de confinamiento implementadas en
 la entidad al inicio de la pandemia.
 
@@ -250,7 +249,7 @@ relación lineal entre estos datos que puede o no estar relacionada con
 el modelo lineal de los otros intervalos.
 
 ¿Bajo qué condiciones se puede dar este supuesto? Es posible que se
-tenga un experimento a través del tiempo donde las condiciones las
+tenga un experimento a través del tiempo donde las condiciones del
 experimento cambian por una cierta temporalidad. En nuestro caso
 queremos probar la hipótesis de que el comportamiento del número de
 viajes realizados ha cambiado por la pandemia o no.
@@ -305,12 +304,12 @@ y rechazar la hipótesis nula si para alguno se llega a un valor alto.
 Para deterrminar si alguno de los valores llega a ser alto, se puede
 usar el estadístico:
 
-\(\sup F = \sup_{1< i <n} F_i.\)
+\[\sup F = \sup_{1< i <n} F_i.\]
 
 Usando este estadístico de prueba, evaluamos la hipótesis nula para
 saber si existe evidencia suficiente para suponer que la pandemia ha
 provocado un cambio en la estructura del número de viajes que se
-realizan en el sitema MiBici de Guadalajara.
+realizan en el sitema Mi Bici de Guadalajara.
 
 \newpage
 \hypertarget{experimentos-con-un-solo-punto-de-quiebre}{%
@@ -472,7 +471,7 @@ La función
 \texttt{efp(trips\ \textasciitilde{}\ date\ +\ 1,\ data\ =\ data,\ type\ =\ "ME")}
 realiza el análisis y regresa los posibles puntos de quiebre. Lo que es
 de nuestro interés, es analizar el \emph{residual sum of squares} cuando
-ajustamos un solo modelo de regrresión lineal, dos modelos, tres modelos
+ajustamos un solo modelo de regresión lineal, dos modelos, tres modelos
 o cuatro modelos dependiendo del número de quiebres que obtenemos. Esto
 se puede apreciar en la siguiente gráfica:
 
@@ -532,7 +531,7 @@ F-statistic:  2711 on 8 and 348 DF,  p-value: < 2.2e-16
 
 Vemos que el p-valor del estadístico \(T\) para cada coeficiente es muy
 bajo, menor a \(10^{-3}\) en la mayoría de los casos. Además vemos que
-\(R^2\) es muy cercano a 1, lo que habla muy bien de nuestro modelos.
+\(R^2\) es muy cercano a 1, lo que habla muy bien de nuestros modelos.
 
 Por último graficamos la serie de tiempo, en rojo los modelos de
 regresión lineal para cada intervalo, en verde el modelo lineal ajustado
