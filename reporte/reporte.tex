@@ -98,11 +98,13 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\author{}
-\date{}
+\title{Proyecto \\ Análisis de Datos}
+\author{Aguayo González Jaime Francisco\\ Barajas Vega José Trinidad}
+\date{ Diciembre 7, 2021}
 
 \begin{document}
-
+\maketitle
+\newpage
 \hypertarget{proyecto-de-anuxe1lisis-de-datos}{%
 \section{Proyecto de Análisis de
 Datos}\label{proyecto-de-anuxe1lisis-de-datos}}
@@ -121,30 +123,30 @@ forma:
 \begin{itemize}
 \item
   En la sección
-  \protect\hyperlink{anuxe1lisis-exploratorio-de-datos}{Análisis
-  Exploratorio de Datos} describimos brevemente la información que
+  \protect\hyperlink{anuxe1lisis-exploratorio-de-datos}{\textbf{Análisis
+  Exploratorio de Datos}} describimos brevemente la información que
   incluye los datos y algunos descubrimientos que hicimos explorando y
   graficando algunas variables
 \item
-  En la sección \protect\hyperlink{cambios-de-estructura}{Cambios de
-  Estructura} explicamos cómo es posible obtener puntos de quiebre donde
+  En la sección \protect\hyperlink{cambios-de-estructura}{\textbf{Cambios de
+  Estructura}} explicamos cómo es posible obtener puntos de quiebre donde
   la estructura de la serie de tiempo cambia, además interpretamos los
   resultados obtenidos al usar dichos métodos
 \item
   En la sección
-  \protect\hyperlink{anuxe1lisis-de-las-estaciones}{Análisis de las
-  estaciones} tratamos de proporcionar gráficas informativas sobre el
+  \protect\hyperlink{anuxe1lisis-de-las-estaciones}{\textbf{Análisis de las
+  estaciones}} tratamos de proporcionar gráficas informativas sobre el
   uso de las estaciones en las diferentes etapas del programa
 \item
   Finalmente, en
-  \protect\hyperlink{conclusiones-y-comentarios-finales}{Conclusiones y
-  Comentarios Finales} damos algunas conclusiones y trabajo a
+  \protect\hyperlink{conclusiones-y-comentarios-finales}{\textbf{Conclusiones y
+  Comentarios Finales}} damos algunas conclusiones y trabajo a
   desarrollar en el futuro
 \end{itemize}
 
 Sin más preámbulo, pasamos a describir la limpieza de los datos y los
 resultados de su análisis exploratorio.
-
+\newpage
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{anuxe1lisis-exploratorio-de-datos}{%
@@ -180,7 +182,7 @@ realizados al día. El resultado fue el siguiente:
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/trips_daily.png}
+\includegraphics{../plots/trips_daily.png}
 \caption{}
 \end{figure}
 
@@ -194,7 +196,7 @@ por días de la semana obtieniendo lo siguiente:
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/trips_daily_by_day.png}
+\includegraphics{../plots/trips_daily_by_day.png}
 \caption{}
 \end{figure}
 
@@ -203,7 +205,7 @@ de viajes. Más evidente es en la siguiente gráfica.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/trips_daily_by_weekend.png}
+\includegraphics{../plots/trips_daily_by_weekend.png}
 \caption{}
 \end{figure}
 
@@ -215,7 +217,7 @@ estructura:
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/trips_weekly.png}
+\includegraphics{../plots/trips_weekly.png}
 \caption{}
 \end{figure}
 
@@ -230,13 +232,13 @@ pares de estaciones, el prrocesamiento de esos datos se detalla en la
 penúltima sección.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
+\newpage
 \hypertarget{cambios-de-estructura}{%
 \subsection{Cambios de estructura}\label{cambios-de-estructura}}
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/serie1.png}
+\includegraphics{../plots/serie1.png}
 \caption{}
 \end{figure}
 
@@ -311,6 +313,7 @@ saber si existe evidencia suficiente para suponer que la pandemia ha
 provocado un cambio en la estructura del número de viajes que se
 realizan en el sitema MiBici de Guadalajara.
 
+\newpage
 \hypertarget{experimentos-con-un-solo-punto-de-quiebre}{%
 \subsubsection{Experimentos con un solo punto de
 quiebre}\label{experimentos-con-un-solo-punto-de-quiebre}}
@@ -345,7 +348,7 @@ breakpoints.Fstats(obj = res2)
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/structChange_files/structChange_9_1.png}
+\includegraphics{../plots/structChange_files/structChange_9_1.png}
 \caption{}
 \end{figure}
 
@@ -373,7 +376,7 @@ sup.F = 1358.7, p-value < 2.2e-16
 
 Podemos graficar los modelos de regresión que resultan para cada
 intervalo. Estos se ven así:\\
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/structChange_files/structChange_15_0.png}
+\includegraphics{../plots/structChange_files/structChange_15_0.png}
 
 Se aprecia como ambas rectas aproximan bien los datos. Sin embargo
 observamos que existe un comportamiento diferente en 2015 y 2016,
@@ -443,6 +446,7 @@ F-statistic:  3297 on 4 and 352 DF,  p-value: < 2.2e-16
 Los p-valores del estadístico \(T\) son muy chicos y
 \(R^2 \approx 0.97\), muy cerca de \(1\).
 
+\newpage
 \hypertarget{experimentos-con-muxfaltiples-puntos-de-quiebre}{%
 \subsubsection{Experimentos con múltiples puntos de
 quiebre}\label{experimentos-con-muxfaltiples-puntos-de-quiebre}}
@@ -475,7 +479,7 @@ se puede apreciar en la siguiente gráfica:
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/structChange_files/structChange_17_3.png}
+\includegraphics{../plots/structChange_files/structChange_17_3.png}
 \caption{}
 \end{figure}
 
@@ -488,7 +492,7 @@ ajustan muy bien a los datos como se muestra en la siguiente imagen:
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/structChange_files/structChange_17_4.png}
+\includegraphics{../plots/structChange_files/structChange_17_4.png}
 \caption{}
 \end{figure}
 
@@ -539,7 +543,7 @@ quiebre.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/serie_breaks.png}
+\includegraphics{../plots/serie_breaks.png}
 \caption{}
 \end{figure}
 
@@ -579,6 +583,7 @@ la ampliación del número de estaciones.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\newpage
 \hypertarget{anuxe1lisis-de-las-estaciones}{%
 \subsection{Análisis de las
 estaciones}\label{anuxe1lisis-de-las-estaciones}}
@@ -599,7 +604,7 @@ registraron viajes semanalmente.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/stations_weekly.png}
+\includegraphics{../plots/stations_weekly.png}
 \caption{}
 \end{figure}
 
@@ -614,7 +619,7 @@ duración de la etapa.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsUno.png}
+\includegraphics{../plots/resultsUno.png}
 \caption{Etapa 1}
 \end{figure}
 
@@ -623,7 +628,7 @@ Abril de 2015.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsDos.png}
+\includegraphics{../plots/resultsDos.png}
 \caption{Etapa 2}
 \end{figure}
 
@@ -636,7 +641,7 @@ calor.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsTres.png}
+\includegraphics{../plots/resultsTres.png}
 \caption{Etapa 3}
 \end{figure}
 
@@ -653,7 +658,7 @@ cantidades de viajes en general.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsCuatro.png}
+\includegraphics{../plots/resultsCuatro.png}
 \caption{Etapa 4}
 \end{figure}
 
@@ -664,7 +669,7 @@ inicios de Marzo de 2020.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsCinco.png}
+\includegraphics{../plots/resultsCinco.png}
 \caption{Etapa 5}
 \end{figure}
 
@@ -678,7 +683,7 @@ estaciones de la segunda etapa.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsSeis.png}
+\includegraphics{../plots/resultsSeis.png}
 \caption{Etapa 6}
 \end{figure}
 
@@ -706,6 +711,7 @@ siguiendo en orden descendente los que estén por encima de 80\% y así
 descendentemente. Se decidió hacer de esta manera para poner más
 atención a la distribución y no tanto a los máximos y mínimos.
 
+\newpage
 \hypertarget{analizando-el-evento-pandemia}{%
 \subsubsection{Analizando el evento
 Pandemia}\label{analizando-el-evento-pandemia}}
@@ -716,15 +722,15 @@ estaciones antes del anuncio del paro a las actividades \textbf{Marzo
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsAntesPandemia.png}
-\caption{Antes del M1rzo 2020}
+\includegraphics{../plots/resultsAntesPandemia.png}
+\caption{Antes del Marzo 2020}
 \end{figure}
 
 Y ahora despues del llamado a quedarse en casa.
 
 \begin{figure}
 \centering
-\includegraphics{/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/resultsDespuesPandemia.png}
+\includegraphics{../plots/resultsDespuesPandemia.png}
 \caption{Mes siguiente después de Marzo 2020}
 \end{figure}
 
@@ -743,36 +749,30 @@ la intereacción de las estaciones.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+
+\newpage
+
 \hypertarget{conclusiones-y-comentarios-finales}{%
 \subsection{Conclusiones y Comentarios
 Finales}\label{conclusiones-y-comentarios-finales}}
 
-\begin{itemize}
-\item
   Hay evidencia significativa para afirmar que el aumentos del número de
   estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el
-  programa. Se destaca en particular la etapa 3. (que coinden los puntos
-  de quiebre con los aumentos y se ve que las nuevas estaciones sí se
-  usan y muchas de ellas conectan con las estaciones más usadas)
-\item
-  El impacto de las medidas de distanciamiento social es notorio en el
-  uso de las bicicletas del programa (cambio de estructura más evidente,
-  el heatmap...). De acuerdo al modelo de regresión lineal, se observa
-  un aumento gradual de viajes.
-\item
+  programa. Se destaca en particular la etapa 3. Estos eventos coinciden con los puntos de quiebre obtenidos en el análisis de puntos de quiebre.\\
+
   Hay regiones fuertemente conexas, en el sentido de que la mayoría de
-  viajes ocurren entre estaciones de estos conjuntos denomidos regiones.
-  (estaciones muy interrelacionadas),
-\item
+  viajes ocurren entre estaciones de estos conjuntos denomidos regiones.\\
+
+  El impacto de las medidas de distanciamiento social es notorio en el
+  uso de las bicicletas del programa, puesto que hay una disminución tanto en los viajes realizados así como en la comunicación de viajes entre estaciones. Por otro lado de acuerdo al modelo de regresión lineal, se observa un aumento gradual de viajes en los últimos meses, esto es observable en la progresión de los heatmap así como en otras gráficas.\\
+
   El impacto del aumento de estaciones fue inmediato al verse un aumento
-  abruto en los viajes (explicar que es de acuerdo a lo que se observa y
-  que no necesariamente refleja la realidad {[}ejemplos{]})
-\item
+  abruto en los viajes esto pudo deberse a razones varias, tales como divulgación de las nuevas rutas, imcorporación de algún programa que ya estaba en arranque, no obstante el análisis de este fenómeno es algo que queda fuera de nuestro alcance en este proyecto.\\
+
   Un punto a tomar en cuenta es que aumentar el número de estaciones no
-  garantiza un mayor uso, el mejor ejemplo de esto es que ocurrió una
-  aparente ampliación en el número de estaciones en 2015 pero no
+  garantiza un mayor uso, el mejor ejemplo de esto es que ocurrió una ampliación en el número de estaciones en 2015 pero no
   significó una diferencia, y esto lo sustentan las observaciones
   visuales así como su no detección en los tests para puntos de quiebre.
-\end{itemize}
+
 
 \end{document}
