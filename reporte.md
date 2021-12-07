@@ -94,7 +94,7 @@ lines(breakpoints(res2))
 ​    En los resultados observmos un linea punteada el posible punto de quiebre para el cual se obtiene el valor del estadísitico $F$ más alto.
 
     	 Optimal 2-segment partition:
-
+    
     Call:
     breakpoints.Fstats(obj = res2)
 
@@ -116,7 +116,7 @@ sctest(res, type="supF")
 ​    
 
     	supF test
-
+    
     data:  res2
     sup.F = 1358.7, p-value < 2.2e-16
 
@@ -159,11 +159,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp)/date - 1, data = data)
-
+    
     Residuals:
        Min     1Q Median     3Q    Max
     -46783  -4269    467   5072  25152
-
+    
     Coefficients:
                                    Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp)segment1      -8.191e+05  1.614e+04 -50.743  < 2e-16 ***
@@ -172,7 +172,7 @@ summary(fm1)
     breakfactor(bp)segment2:date  4.330e+01  5.284e+00   8.195 4.70e-15 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
+    
     Residual standard error: 8367 on 352 degrees of freedom
     Multiple R-squared:  0.974,	Adjusted R-squared:  0.9737
     F-statistic:  3297 on 4 and 352 DF,  p-value: < 2.2e-16
@@ -230,34 +230,34 @@ lines(ci)
 ​    
 
     	 Optimal (m+1)-segment partition:
-
+    
     Call:
     breakpoints.formula(formula = trips ~ date + 1, data = data)
-
+    
     Breakpoints at observation number:
-
+    
     m = 1                  271
     m = 2              209 271
     m = 3      86      209 271
     m = 4      85  150 209 271
     m = 5   53 106 159 212 271
-
+    
     Corresponding to breakdates:
-
+    
     m = 1                                                                          
     m = 2                                                         0.587078651685393
     m = 3                     0.241573033707865                   0.587078651685393
     m = 4                     0.23876404494382  0.421348314606742 0.587078651685393
     m = 5   0.148876404494382 0.297752808988764 0.446629213483146 0.595505617977528
-
+    
     m = 1   0.76123595505618
     m = 2   0.76123595505618
     m = 3   0.76123595505618
     m = 4   0.76123595505618
     m = 5   0.76123595505618
-
+    
     Fit:
-
+    
     m   0         1         2         3         4         5        
     RSS 1.198e+11 2.464e+10 1.901e+10 1.497e+10 1.398e+10 1.557e+10
     BIC 8.018e+03 7.472e+03 7.398e+03 7.330e+03 7.323e+03 7.379e+03
@@ -272,13 +272,13 @@ lines(ci)
 
 
     	 Optimal 5-segment partition:
-
+    
     Call:
     breakpoints.breakpointsfull(obj = bp.bikes)
-
+    
     Breakpoints at observation number:
     85 150 209 271
-
+    
     Corresponding to breakdates:
     0.238764 0.4213483 0.5870787 0.761236
 
@@ -306,11 +306,11 @@ summary(fm1)
 
     Call:
     lm(formula = trips ~ breakfactor(bp.bikes2)/date - 1, data = data)
-
+    
     Residuals:
        Min     1Q Median     3Q    Max
     -37872  -1903    492   3757  16818
-
+    
     Coefficients:
                                           Estimate Std. Error t value Pr(>|t|)    
     breakfactor(bp.bikes2)segment1      -1.816e+05  6.812e+04  -2.666 0.008041 **
@@ -323,7 +323,7 @@ summary(fm1)
     breakfactor(bp.bikes2)segment4:date  4.330e+01  4.142e+00  10.455  < 2e-16 ***
     ---
     Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
+    
     Residual standard error: 6558 on 348 degrees of freedom
     Multiple R-squared:  0.9842,	Adjusted R-squared:  0.9838
     F-statistic:  2711 on 8 and 348 DF,  p-value: < 2.2e-16
@@ -336,16 +336,16 @@ summary(fm1)
 
 ## Análisis de las estaciones
 
-En esta sección se exploramos los viajes entre puntos de registo del sistema, puntos a los que llamaremos estaciones. La idea surge de las onservaciones de que hay un comportamiento diferente a partir de la apertura de nuevas estaciones. Para poder hacer observaciones nos apoyamos en herramientas de *R* así como de *Python*.
+En esta sección exploramos los viajes entre puntos de recogida de bicicletas, puntos a los que llamaremos estaciones. La idea surge de las observaciones de que hay un comportamiento diferente a partir de la apertura de nuevas estaciones. Para poder hacer observaciones nos apoyamos en herramientas de *R* así como de *Python*.
 
 Se tomó el acumulado de viajes mensuales y con ello se generaron matrices con la siguiente cualidad:
 **Si había un viaje de la estación *i* hacia la estación *j* entonces a la entrada *(i,j)* de la matriz se le suma 1.**
 
-La siguiente gráfica muestra el la cantidad de diferentes estaciones registradas semanalmente.
+La siguiente gráfica muestra la cantidad de diferentes estaciones registradas semanalmente.
 
 ![agregado2](plots/stations_weekly.png)
 
-Observemos que hay 4 aumentos importantes en cuanto a la cantidad de diferentes registros, por ello exploraramemos como se se comporta la interacción en estas etapas.
+Observemos que hay 4 aumentos importantes en cuanto a la cantidad de estaciones diferentes, por ello exploramos como se se comporta la interacción en estas etapas.
 
 En las gráficas tipo HeatMap se muestra la interacción de viajes, donde oscuro significa nula o casi nula interacción.
 
@@ -367,9 +367,9 @@ Después de la tercera ampliación, podemos ver que no hay un gran cambio entre 
 
 Finalente al realizarse la cuarta expansión de estaciones podemos ver que no hay un gran cambio entre el comportamiento de las estaciones anteriores, así como tampoco representa una gran interacción con las estaciones establecidas anteriormente.
 
-Hay evidencia visual para justificar los cambios en el comportamiento de los viajes de acuerdo a los ahumentos en la cantidad de estaciones, salvo por la primera ampliación, esto puede deberse tal vez a su ubicación geográfica pues el mapa de calor muestra que esas estaciones solo mantienen interacción entre ellas prácticamente.
+Hay evidencia visual para justificar los cambios en el comportamiento de los viajes de acuerdo a los aumentos en la cantidad de estaciones, salvo por la primera ampliación, esto puede deberse tal vez a su ubicación geográfica pues el mapa de calor muestra que esas estaciones solo mantienen interacción entre ellas prácticamente.
 
-Para la realización de estos gráficos usamos una librería de *python* llamada **seaborn**, que asigna el color de acuerdo a una escala lineal. Para evitar que los gráficos fueran muy opacos decidmos reasigar las observaciones de acuerdo al intervalo al que pertenecían tomando los cortes a partir de los quantiles observados e ignorando los ceros. De esta manera, los puntos mas iluminados serán aquellos que se encuentren por encima del 90% de las observaciones, siguiendo en orden descendente los que estén por encima de 80% y así descendentemente. Se decidió hacer de esta manera para poner más atención a la distribución y no tanto a los máximos y mínimos.
+Para la realización de estos gráficos usamos una librería de *python* llamada **seaborn**, que asigna el color de acuerdo a una escala lineal. Para evitar que los gráficos fueran muy opacos decidimos reasigar las observaciones de acuerdo al intervalo al que pertenecían tomando los cortes a partir de los quantiles observados e ignorando los ceros. De esta manera, los puntos mas iluminados serán aquellos que se encuentren por encima del 90% de las observaciones, siguiendo en orden descendente los que estén por encima de 80% y así descendentemente. Se decidió hacer de esta manera para poner más atención a la distribución y no tanto a los máximos y mínimos.
 
 ### Analizando el evento Pandemia
 
@@ -385,6 +385,8 @@ Fueron calculados en la misma escala de calor para hacer ver la diferencia, se v
 
 A continuación una visualización de como se fue dando el crecimiento de la intereacción de las estaciones.
 
+![giff](/Users/jaimefco/Documents/AnalisisDeDatos/proyecto/plots/Evolucion01.gif)
+
 - ¿La apertura de nuevas estaciones justifica el aumento de viajes? <- ==Aquí debe ir el estudio de viajes entre estaciones==
 - ¿El aumento de viajes se da gracias a nuevos usuarios o a los usuarios ya inscritos en el programa? <- ==Posible nuevo aspecto a explorar==
 
@@ -392,4 +394,8 @@ A continuación una visualización de como se fue dando el crecimiento de la int
 
 ## Conclusiones y Comentarios Finales
 
-.
+- Hay evidencia significativa para afirmar que el aumentos del número de estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el programa. Se destaca en particular la etapa 3. (que coinden los puntos de quiebre con los aumentos y se ve que las nuevas estaciones sí se usan y muchas de ellas conectan con las estaciones más usadas)
+- El impacto de las medidas de distanciamiento social es notorrio en el uso de las bicicletas del programa (cmabio de estructura más evidente, el heatmap...). De acuerdo al modelo de regresión lineal, se observa un aumento grradual de viajes.
+- Hay regiones fuertemente conexas (estaciones muy interrelacionadas), 
+- El impacto del aumento de estaciones fue inmediato al verse un aumento abruto en los viajes (explicar que es de acuerdo a lo que se observa y que no necesariamente refleja la realidad [ejemplos])
+
