@@ -180,10 +180,10 @@ Como para responder nuestras preguntas, solo necesitamos el número de
 viajes por intervalo de tiempo, decidimos contar el número de viajes
 realizados al día. El resultado fue el siguiente:
 
-\begin{figure}
+\begin{figure}[!h]
 \centering
-\includegraphics{../plots/trips_daily.png}
-\caption{}
+\includegraphics[width=8cm, height=6cm]{../plots/trips_daily.png}
+\caption{Número de viajes realizados por día.}
 \end{figure}
 
 En esta gráfica se observa el número de viajes por día, desde el enero
@@ -194,19 +194,19 @@ otro. De hecho, podemos encontrar al menos dos grupos diferenciados, uno
 arriba y otro abajo. Para distiguir los días de mejor manera, agrupamos
 por días de la semana obtieniendo lo siguiente:
 
-\begin{figure}
+\begin{figure}[!h]
 \centering
-\includegraphics{../plots/trips_daily_by_day.png}
-\caption{}
+\includegraphics[width=8cm, height=6cm]{../plots/trips_daily_by_day.png}
+\caption{Número de viajes realizados por día, clasificación por día de la semana.}
 \end{figure}
 
 Podemos observar como sábados y domingos tenemos una baja en el número
 de viajes. Más evidente es en la siguiente gráfica.
 
-\begin{figure}
+\begin{figure}[!h]
 \centering
-\includegraphics{../plots/trips_daily_by_weekend.png}
-\caption{}
+\includegraphics[width=8cm, height=6cm]{../plots/trips_daily_by_weekend.png}
+\caption{Número de viajes realizados por día, dia laborable vs. fin de semana.}
 \end{figure}
 
 Puesto que no queremos que nuestros métodos para evaluar el cambio de
@@ -215,10 +215,10 @@ decidimos agregar el número de viajes realizados cada semana (empezando
 en lunes). El número de viajes por se mana presenta la siguiente
 estructura:
 
-\begin{figure}
+\begin{figure}[!h]
 \centering
-\includegraphics{../plots/trips_weekly.png}
-\caption{}
+\includegraphics[width=8cm, height=6cm]{../plots/trips_weekly.png}
+\caption{Número de viajes realizados por semana.}
 \end{figure}
 
 Se observa una serie de tiempo más uniforme con pequeñas caidas en lo
@@ -236,10 +236,9 @@ penúltima sección.
 \hypertarget{cambios-de-estructura}{%
 \subsection{Cambios de estructura}\label{cambios-de-estructura}}
 
-\begin{figure}
+\begin{figure}[!h]
 \centering
-\includegraphics{../plots/serie1.png}
-\caption{}
+\includegraphics[width=12cm]{../plots/serie1.png}
 \end{figure}
 
 Dado un conjunto de datos \(\{(Y_i, X_i)\}_{i=1}^n\) con \(X_i \in \mathbb{R}\),
@@ -346,10 +345,10 @@ Call:
 breakpoints.Fstats(obj = res2)
 \end{verbatim}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/structChange_files/structChange_9_1.png}
-\caption{}
+\includegraphics[width=8cm, height=6cm]{../plots/structChange_files/structChange_9_1.png}
+\caption{F-estadístico para cada posible punto de quiebre. Observe un máximo a principios de 2020.}
 \end{figure}
 
 Note que el máximo lo obtenemos en fechas cercanas a febrero de 2020.
@@ -477,10 +476,9 @@ ajustamos un solo modelo de regrresión lineal, dos modelos, tres modelos
 o cuatro modelos dependiendo del número de quiebres que obtenemos. Esto
 se puede apreciar en la siguiente gráfica:
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/structChange_files/structChange_17_3.png}
-\caption{}
+\includegraphics[width=8cm, height=6cm]{../plots/structChange_files/structChange_17_3.png}
 \end{figure}
 
 Podemos destacar que el cambio en el error disminuye considerablemente
@@ -490,9 +488,9 @@ aumenta. Después de una inspección visual de los modelos de regresión,
 decidimos quedarnos con los primeros tres puntos de quiebre, pues se
 ajustan muy bien a los datos como se muestra en la siguiente imagen:
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/structChange_files/structChange_17_4.png}
+\includegraphics[width=8cm, height=6cm]{../plots/structChange_files/structChange_17_4.png}
 \caption{}
 \end{figure}
 
@@ -543,8 +541,7 @@ quiebre.
 
 \begin{figure}
 \centering
-\includegraphics{../plots/serie_breaks.png}
-\caption{}
+\includegraphics[width=12cm]{../plots/serie_breaks.png}
 \end{figure}
 
 ¿A qué se pueden deber los puntos de quiebre?
@@ -605,7 +602,6 @@ registraron viajes semanalmente.
 \begin{figure}
 \centering
 \includegraphics{../plots/stations_weekly.png}
-\caption{}
 \end{figure}
 
 Observemos que hay 4 aumentos importantes en cuanto a la cantidad de
@@ -619,16 +615,16 @@ duración de la etapa.
 
 \begin{figure}
 \centering
-\includegraphics{../plots/resultsUno.png}
+\includegraphics[width=10cm]{../plots/resultsUno.png}
 \caption{Etapa 1}
 \end{figure}
 
 Etapa Uno tomando los primeros 4 meses del registro, de Enero de 2015 a
 Abril de 2015.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/resultsDos.png}
+\includegraphics[width=10cm]{../plots/resultsDos.png}
 \caption{Etapa 2}
 \end{figure}
 
@@ -639,9 +635,9 @@ las estaciones agregadas no tienen mucha interacción con las estaciones
 iniciales, pues al agregarse no se nota un cambio visible en el mapa de
 calor.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/resultsTres.png}
+\includegraphics[width=10cm]{../plots/resultsTres.png}
 \caption{Etapa 3}
 \end{figure}
 
@@ -656,9 +652,9 @@ incrementó la actividad en general, podemos asumir que hay evidencia
 visual de que en esta ampliación hubo un cambio significativo en las
 cantidades de viajes en general.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/resultsCuatro.png}
+\includegraphics[width=10cm]{../plots/resultsCuatro.png}
 \caption{Etapa 4}
 \end{figure}
 
@@ -667,9 +663,9 @@ Etapa Cuatro tomando de Noviembre de 2018 a Febrero de 2020.
 Decidimos hacer un corte aquí por el evento del confinamiento dictado a
 inicios de Marzo de 2020.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/resultsCinco.png}
+\includegraphics[width=10cm]{../plots/resultsCinco.png}
 \caption{Etapa 5}
 \end{figure}
 
@@ -681,9 +677,9 @@ un nuevo aporte pues las estaciones agregadas en esta etapa tienen
 intereacción con las estaciones antiguas, pero casi nula con las
 estaciones de la segunda etapa.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics{../plots/resultsSeis.png}
+\includegraphics[width=10cm]{../plots/resultsSeis.png}
 \caption{Etapa 6}
 \end{figure}
 
@@ -722,7 +718,7 @@ estaciones antes del anuncio del paro a las actividades \textbf{Marzo
 
 \begin{figure}
 \centering
-\includegraphics{../plots/resultsAntesPandemia.png}
+\includegraphics[width=10cm]{../plots/resultsAntesPandemia.png}
 \caption{Antes del Marzo 2020}
 \end{figure}
 
@@ -730,7 +726,7 @@ Y ahora despues del llamado a quedarse en casa.
 
 \begin{figure}
 \centering
-\includegraphics{../plots/resultsDespuesPandemia.png}
+\includegraphics[width=10cm]{../plots/resultsDespuesPandemia.png}
 \caption{Mes siguiente después de Marzo 2020}
 \end{figure}
 
@@ -756,23 +752,20 @@ la intereacción de las estaciones.
 \subsection{Conclusiones y Comentarios
 Finales}\label{conclusiones-y-comentarios-finales}}
 
-  Hay evidencia significativa para afirmar que el aumentos del número de
-  estaciones de las etapas 3 y 4 tuvieron un impacto positivo en el
-  programa. Se destaca en particular la etapa 3. Estos eventos coinciden con los puntos de quiebre obtenidos en el análisis de puntos de quiebre.\\
+  De acuerdo al análisis elaborado, encontramos evidencia significativa para afirmar que el aumentos del número de
+  estaciones de las etapas 3 y 4 tuvieron un impacto \emph{positivo} en el
+  programa. Se destaca en particular la etapa 3, donde observamos un aumentos en el número de viajes correspondiente a un gran aumento del número de estaciones. Los eventos de aumento de estaciones coinciden con los puntos de quiebre obtenidos en el análisis de estructura.\\
 
-  Hay regiones fuertemente conexas, en el sentido de que la mayoría de
-  viajes ocurren entre estaciones de estos conjuntos denomidos regiones.\\
+  Tambien se observa que el impacto del aumento en el número de estaciones fue inmediato, pues en cada modelo de regresión ajustado se observa un intercepto más álto, lo que representa aumento abruto en los viajes. Esto pudo deberse a razones varias, tales como divulgación de las nuevas rutas o incorporación de algún programa que ya estaba en arranque y no necesariamente al simple hecho de abrir nuevas estaciones; no obstante el análisis de este fenómeno es algo que queda fuera de nuestro alcance pues se requiero un mayor conocimiento de las políticas aplicadas al inicio de cada etapa.\\
 
-  El impacto de las medidas de distanciamiento social es notorio en el
-  uso de las bicicletas del programa, puesto que hay una disminución tanto en los viajes realizados así como en la comunicación de viajes entre estaciones. Por otro lado de acuerdo al modelo de regresión lineal, se observa un aumento gradual de viajes en los últimos meses, esto es observable en la progresión de los heatmap así como en otras gráficas.\\
-
-  El impacto del aumento de estaciones fue inmediato al verse un aumento
-  abruto en los viajes esto pudo deberse a razones varias, tales como divulgación de las nuevas rutas, imcorporación de algún programa que ya estaba en arranque, no obstante el análisis de este fenómeno es algo que queda fuera de nuestro alcance en este proyecto.\\
-
-  Un punto a tomar en cuenta es que aumentar el número de estaciones no
+  Tambien nos gustaría recalcar que aumentar el número de estaciones no
   garantiza un mayor uso, el mejor ejemplo de esto es que ocurrió una ampliación en el número de estaciones en 2015 pero no
   significó una diferencia, y esto lo sustentan las observaciones
-  visuales así como su no detección en los tests para puntos de quiebre.
+  visuales así como su no detección en los tests para puntos de quiebre.\\
 
+  En los heatmaps se pueden observar regiones fuertemente conexas, en el sentido de que la mayoría de viajes ocurren entre estaciones de estos conjuntos denominados regiones.\\
+
+  El impacto de las medidas de distanciamiento social es notorio en el
+  uso de las bicicletas del programa, puesto que hay una disminución tanto en los viajes realizados así como en la comunicación de viajes entre estaciones. Por otro lado de acuerdo al modelo de regresión lineal, se observa un aumento gradual de viajes en los últimos meses, esto es observable en la progresión \footnote{Se adjunta un giff animado con los heatmaps} de los heatmap así como en otras gráficas.
 
 \end{document}
